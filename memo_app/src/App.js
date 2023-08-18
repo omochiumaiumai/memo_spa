@@ -1,14 +1,16 @@
 import React from 'react';
-import Header from './Header.js';
-import MemoForm from './MemoForm.js';
+import Header from './Header';
+import MemoList from './MemoList';
+import MemoForm from './MemoForm';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div>
       <Header />
+      <MemoList />
       <MemoForm />
     </div>
   );
-}
+};
 
 export default App;

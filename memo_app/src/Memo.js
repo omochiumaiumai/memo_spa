@@ -1,5 +1,12 @@
 import React from 'react';
 
-export default function Memo() {
-  return <li>text</li>;
-}
+const Memo = ({ content }) => {
+  const firstLine = content.split('\n')[0];
+  return (
+    <div>
+      <p>{firstLine}</p>
+    </div>
+  );
+};
+
+export default Memo;
