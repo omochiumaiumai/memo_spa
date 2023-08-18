@@ -6,9 +6,9 @@ import MemoForm from './MemoForm';
 const App = () => {
   return (
     <div>
-      <Header />
-      <MemoList />
+      <Header>Memo App</Header>
       <MemoForm />
+      <MemoList />
     </div>
   );
 };

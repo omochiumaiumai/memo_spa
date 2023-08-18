@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function Header() {
-  return <h1>Memo App</h1>;
-}
+const Header = ({ children }) => {
+  return <h1>{children}</h1>;
+};
+
+export default Header;

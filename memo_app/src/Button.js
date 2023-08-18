@@ -1,4 +1,5 @@
 import React from 'react';
-export default function Button() {
-  return <button type="button">Add</button>;
+
+export default function Button({ onClick, children }) {
+  return <button onClick={onClick}>{children}</button>;
 }

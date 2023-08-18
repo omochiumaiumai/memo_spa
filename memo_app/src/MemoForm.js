@@ -1,11 +1,29 @@
-import React from 'react';
-import Button from './Button.js';
+import React, { useState } from 'react';
+import Button from './Button';
 
-export default function MemoForm() {
+const MemoForm = () => {
+  const [newMemoContent, setNewMemoContent] = useState('');
+
+  const handleNewMemoChange = (event) => {
+    setNewMemoContent(event.target.value);
+  };
+
+  const handleAddMemo = () => {
+    if (newMemoContent.trim() !== '') {
+      const memoData = JSON.parse(localStorage.getItem('memos')) || [];
+      const newMemo = { id: Date.now(), content: newMemoContent };
+      memoData.push(newMemo);
+      localStorage.setItem('memos', JSON.stringify(memoData));
+      setNewMemoContent('');
+    }
+  };
+
   return (
-    <form>
-      <input type="text" name="memo" placeholder="Please enter a note." />
-      <Button />
-    </form>
+    <div>
+      <textarea value={newMemoContent} onChange={handleNewMemoChange} />
+      <Button onClick={handleAddMemo}>Add</Button>
+    </div>
   );
-}
+};
+
+export default MemoForm;

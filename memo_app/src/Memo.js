@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Memo = ({ content }) => {
+const Memo = ({ content, onClick }) => {
   const firstLine = content.split('\n')[0];
   return (
-    <div>
+    <div onClick={onClick}>
       <p>{firstLine}</p>
     </div>
   );
