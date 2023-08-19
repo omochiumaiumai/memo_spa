@@ -1,22 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './Button';
 import PropTypes from 'prop-types';
 
-export default function MemoForm({ onAddMemo }) {
-  const [newMemoContent, setNewMemoContent] = useState('');
-
-  const handleNewMemoChange = (event) => {
-    setNewMemoContent(event.target.value);
-  };
-
-  const handleAddMemo = () => {
-    if (newMemoContent.trim() !== '') {
-      const newMemo = { id: Date.now(), content: newMemoContent };
-      onAddMemo(newMemo);
-      setNewMemoContent('');
-    }
-  };
-
+export default function MemoForm({ handleAddMemo, handleNewMemoChange, newMemoContent }) {
   return (
     <div>
       <textarea value={newMemoContent} onChange={handleNewMemoChange} />
@@ -25,5 +11,7 @@ export default function MemoForm({ onAddMemo }) {
   );
 }
 MemoForm.propTypes = {
-  onAddMemo: PropTypes.func,
+  handleAddMemo: PropTypes.func,
+  handleNewMemoChange: PropTypes.func,
+  newMemoContent: PropTypes.string,
 };

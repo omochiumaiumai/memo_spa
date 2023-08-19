@@ -7,6 +7,7 @@ const App = () => {
   const [memoData, setMemoData] = useState(JSON.parse(localStorage.getItem('memos')) || []);
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [editedContent, setEditedContent] = useState('');
+  const [newMemoContent, setNewMemoContent] = useState('');
 
   const handleMemoClick = (memo) => {
     if (selectedMemo && selectedMemo.id === memo.id) {
@@ -36,16 +37,32 @@ const App = () => {
     setSelectedMemo(null);
   };
 
-  const handleAddMemo = (newMemo) => {
+  const onAddMemo = (newMemo) => {
     const updatedMemos = [...memoData, newMemo];
     localStorage.setItem('memos', JSON.stringify(updatedMemos));
     setMemoData(updatedMemos);
   };
 
+  const handleNewMemoChange = (event) => {
+    setNewMemoContent(event.target.value);
+  };
+
+  const handleAddMemo = () => {
+    if (newMemoContent.trim() !== '') {
+      const newMemo = { id: Date.now(), content: newMemoContent };
+      onAddMemo(newMemo);
+      setNewMemoContent('');
+    }
+  };
+
   return (
     <div>
       <Header>Memo App</Header>
-      <MemoForm onAddMemo={handleAddMemo} />
+      <MemoForm
+        handleAddMemo={handleAddMemo}
+        handleNewMemoChange={handleNewMemoChange}
+        newMemoContent={newMemoContent}
+      />
       <MemoList
         memoData={memoData}
         selectedMemo={selectedMemo}
