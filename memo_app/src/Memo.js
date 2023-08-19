@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Memo = ({ content, onClick }) => {
   const firstLine = content.split('\n')[0];
@@ -9,4 +10,8 @@ const Memo = ({ content, onClick }) => {
   );
 };
 
+Memo.propTypes = {
+  content: PropTypes.string,
+  onClick: PropTypes.func,
+};
 export default Memo;

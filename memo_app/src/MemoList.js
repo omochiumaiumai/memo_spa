@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Button from './Button';
 import Memo from './Memo';
+import PropTypes from 'prop-types';
 
 export default function MemoList({
   memoData,
@@ -30,3 +31,12 @@ export default function MemoList({
     </div>
   );
 }
+MemoList.propTypes = {
+  memoData: PropTypes.array,
+  selectedMemo: PropTypes.object,
+  editedContent: PropTypes.string,
+  onMemoClick: PropTypes.func,
+  onDeleteMemo: PropTypes.func,
+  onUpdateMemo: PropTypes.func,
+  onEditContentChange: PropTypes.func,
+};

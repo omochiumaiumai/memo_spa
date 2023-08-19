@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
 export default function MemoForm({ onAddMemo }) {
   const [newMemoContent, setNewMemoContent] = useState('');
@@ -23,3 +24,6 @@ export default function MemoForm({ onAddMemo }) {
     </div>
   );
 }
+MemoForm.propTypes = {
+  onAddMemo: PropTypes.func,
+};
