@@ -18,13 +18,10 @@ const App = () => {
   };
 
   const handleDeleteMemo = () => {
-    const shouldDelete = window.confirm('Do you want to delete this memo?');
-    if (shouldDelete) {
-      const updatedMemos = memoData.filter((memo) => memo.id !== selectedMemo.id);
-      localStorage.setItem('memos', JSON.stringify(updatedMemos));
-      setMemoData(updatedMemos);
-      setSelectedMemo(null);
-    }
+    const updatedMemos = memoData.filter((memo) => memo.id !== selectedMemo.id);
+    localStorage.setItem('memos', JSON.stringify(updatedMemos));
+    setMemoData(updatedMemos);
+    setSelectedMemo(null);
   };
 
   const handleUpdateMemo = () => {
