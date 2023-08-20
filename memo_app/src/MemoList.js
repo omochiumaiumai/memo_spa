@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './Header';
 import Button from './Button';
 import Memo from './Memo';
+import AuthContext from './AuthContext.js';
 import PropTypes from 'prop-types';
 
 export default function MemoList({
@@ -13,6 +14,7 @@ export default function MemoList({
   onUpdateMemo,
   onEditContentChange,
 }) {
+  const auth = useContext(AuthContext);
   return (
     <div>
       <ul>
@@ -24,8 +26,8 @@ export default function MemoList({
         <div>
           <Header>Detail View</Header>
           <textarea value={editedContent} onChange={onEditContentChange} />
-          <Button onClick={onDeleteMemo}>Delete</Button>
-          <Button onClick={onUpdateMemo}>Update</Button>
+          {auth && <Button onClick={onDeleteMemo}>Delete</Button>}
+          {auth && <Button onClick={onUpdateMemo}>Update</Button>}
         </div>
       )}
     </div>
