@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import Header from './Header';
 import MemoList from './MemoList';
 import MemoForm from './MemoForm';
+import Authentication from './Authentication';
+import AuthContext from './AuthContext.js';
 
 const App = () => {
   const [memoData, setMemoData] = useState(JSON.parse(localStorage.getItem('memos')) || []);
   const [selectedMemo, setSelectedMemo] = useState(null);
   const [editedContent, setEditedContent] = useState('');
   const [newMemoContent, setNewMemoContent] = useState('');
+  const [auth, setAuth] = useState(false);
 
   const handleMemoClick = (memo) => {
     if (selectedMemo && selectedMemo.id === memo.id) {
@@ -55,24 +58,31 @@ const App = () => {
     }
   };
 
+  const toggleAuth = () => {
+    setAuth(!auth);
+  };
+
   return (
-    <div>
-      <Header>Memo App</Header>
-      <MemoForm
-        handleAddMemo={handleAddMemo}
-        handleNewMemoChange={handleNewMemoChange}
-        newMemoContent={newMemoContent}
-      />
-      <MemoList
-        memoData={memoData}
-        selectedMemo={selectedMemo}
-        editedContent={editedContent}
-        onMemoClick={handleMemoClick}
-        onDeleteMemo={handleDeleteMemo}
-        onUpdateMemo={handleUpdateMemo}
-        onEditContentChange={(event) => setEditedContent(event.target.value)}
-      />
-    </div>
+    <AuthContext.Provider value={auth}>
+      <div>
+        <Header>Memo App</Header>
+        <Authentication toggleAuth={toggleAuth} />
+        <MemoForm
+          handleAddMemo={handleAddMemo}
+          handleNewMemoChange={handleNewMemoChange}
+          newMemoContent={newMemoContent}
+        />
+        <MemoList
+          memoData={memoData}
+          selectedMemo={selectedMemo}
+          editedContent={editedContent}
+          onMemoClick={handleMemoClick}
+          onDeleteMemo={handleDeleteMemo}
+          onUpdateMemo={handleUpdateMemo}
+          onEditContentChange={(event) => setEditedContent(event.target.value)}
+        />
+      </div>
+    </AuthContext.Provider>
   );
 };
 
