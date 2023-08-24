@@ -57,7 +57,7 @@ const App = () => {
 
   return (
     <div>
-      <Header>Memo App</Header>
+      <Header level={1}>Memo App</Header>
       <MemoForm
         handleAddMemo={handleAddMemo}
         handleNewMemoChange={handleNewMemoChange}
