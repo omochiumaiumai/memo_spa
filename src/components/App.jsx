@@ -63,10 +63,9 @@ const App = () => {
   };
 
   return (
-<<<<<<< HEAD:memo_app/src/App.js
     <AuthContext.Provider value={auth}>
       <div>
-        <Header>Memo App</Header>
+        <Header level={1}>Memo App</Header>
         <Authentication toggleAuth={toggleAuth} />
         <MemoForm
           handleAddMemo={handleAddMemo}
@@ -84,25 +83,6 @@ const App = () => {
         />
       </div>
     </AuthContext.Provider>
-=======
-    <div>
-      <Header level={1}>Memo App</Header>
-      <MemoForm
-        handleAddMemo={handleAddMemo}
-        handleNewMemoChange={handleNewMemoChange}
-        newMemoContent={newMemoContent}
-      />
-      <MemoList
-        memoData={memoData}
-        selectedMemo={selectedMemo}
-        editedContent={editedContent}
-        onMemoClick={handleMemoClick}
-        onDeleteMemo={handleDeleteMemo}
-        onUpdateMemo={handleUpdateMemo}
-        onEditContentChange={(event) => setEditedContent(event.target.value)}
-      />
-    </div>
->>>>>>> devspa:src/components/App.jsx
   );
 };
 
