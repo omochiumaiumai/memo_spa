@@ -24,7 +24,7 @@ export default function MemoList({
       </ul>
       {selectedMemo && (
         <div>
-          <Header>Detail View</Header>
+          <Header level={2}>Detail View</Header>
           <textarea value={editedContent} onChange={onEditContentChange} />
           {auth && <Button onClick={onDeleteMemo}>Delete</Button>}
           {auth && <Button onClick={onUpdateMemo}>Update</Button>}

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Memo({ content, onClick }) {
   const firstLine = content.split('\n')[0];
-  return (
-    <div onClick={onClick}>
-      <li>{firstLine}</li>
-    </div>
-  );
+  return <li onClick={onClick}>{firstLine}</li>;
 }
 
 Memo.propTypes = {
