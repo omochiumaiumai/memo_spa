@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Button from './Button';
-import AuthContext from './AuthContext.js';
+import useAuth from './useAuth';
 import PropTypes from 'prop-types';
 
 export default function MemoForm({ handleAddMemo, handleNewMemoChange, newMemoContent }) {
-  const auth = useContext(AuthContext);
+  const auth = useAuth();
   return (
     <div>
       <textarea value={newMemoContent} onChange={handleNewMemoChange} />

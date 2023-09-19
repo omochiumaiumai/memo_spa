@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from './Header';
 import Button from './Button';
 import Memo from './Memo';
-import AuthContext from './AuthContext.js';
+import useAuth from './useAuth';
 import PropTypes from 'prop-types';
 
 export default function MemoList({
@@ -14,7 +14,7 @@ export default function MemoList({
   onUpdateMemo,
   onEditContentChange,
 }) {
-  const auth = useContext(AuthContext);
+  const auth = useAuth();
   return (
     <div>
       <ul>
