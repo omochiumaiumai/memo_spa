@@ -61,7 +61,9 @@ const App = () => {
   const toggleAuth = () => {
     setAuth(!auth);
   };
-
+  const editedContentChange = (event) => {
+    setEditedContent(event.target.value);
+  };
   return (
     <AuthContext.Provider value={auth}>
       <div>
@@ -79,7 +81,7 @@ const App = () => {
           onMemoClick={handleMemoClick}
           onDeleteMemo={handleDeleteMemo}
           onUpdateMemo={handleUpdateMemo}
-          onEditContentChange={(event) => setEditedContent(event.target.value)}
+          onEditContentChange={editedContentChange}
         />
       </div>
     </AuthContext.Provider>
