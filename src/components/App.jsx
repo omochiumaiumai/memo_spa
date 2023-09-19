@@ -66,7 +66,7 @@ const App = () => {
   };
   return (
     <AuthContext.Provider value={auth}>
-      <div>
+      <>
         <Header level={1}>Memo App</Header>
         <Authentication toggleAuth={toggleAuth} />
         <MemoForm
@@ -83,7 +83,7 @@ const App = () => {
           onUpdateMemo={handleUpdateMemo}
           onEditContentChange={editedContentChange}
         />
-      </div>
+      </>
     </AuthContext.Provider>
   );
 };
