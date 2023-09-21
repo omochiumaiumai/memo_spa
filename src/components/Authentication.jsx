@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Button from './Button';
-import AuthContext from './AuthContext.js';
+import useAuth from './useAuth';
 import PropTypes from 'prop-types';
 
 export default function Authentication({ toggleAuth }) {
-  const auth = useContext(AuthContext);
+  const auth = useAuth();
 
-  return <Button onClick={toggleAuth}>{auth ? 'Logout' : 'Login'}</Button>;
+  return (
+    <Button onClick={toggleAuth} disabled={false}>
+      {auth ? 'Logout' : 'Login'}
+    </Button>
+  );
 }
 
 Authentication.propTypes = {
