@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Button from './Button';
 import Memo from './Memo';
+import useAuth from './useAuth';
 import PropTypes from 'prop-types';
 
 export default function MemoList({
@@ -13,6 +14,8 @@ export default function MemoList({
   onUpdateMemo,
   onEditContentChange,
 }) {
+  const auth = useAuth();
+
   return (
     <div>
       <ul>
@@ -24,8 +27,12 @@ export default function MemoList({
         <div>
           <Header level={2}>Detail View</Header>
           <textarea value={editedContent} onChange={onEditContentChange} />
-          <Button onClick={onDeleteMemo}>Delete</Button>
-          <Button onClick={onUpdateMemo}>Update</Button>
+          <Button onClick={onDeleteMemo} disabled={!auth}>
+            Delete
+          </Button>
+          <Button onClick={onUpdateMemo} disabled={!auth}>
+            Update
+          </Button>
         </div>
       )}
     </div>
