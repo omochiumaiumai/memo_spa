@@ -15,12 +15,6 @@ export default function MemoList({
   onEditContentChange,
 }) {
   const auth = useAuth();
-  const authButtons = auth && (
-    <>
-      <Button onClick={onDeleteMemo}>Delete</Button>
-      <Button onClick={onUpdateMemo}>Update</Button>
-    </>
-  );
 
   return (
     <div>
@@ -33,7 +27,12 @@ export default function MemoList({
         <div>
           <Header level={2}>Detail View</Header>
           <textarea value={editedContent} onChange={onEditContentChange} />
-          {authButtons}
+          <Button onClick={onDeleteMemo} disabled={!auth}>
+            Delete
+          </Button>
+          <Button onClick={onUpdateMemo} disabled={!auth}>
+            Update
+          </Button>
         </div>
       )}
     </div>

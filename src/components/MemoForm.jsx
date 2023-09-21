@@ -8,7 +8,9 @@ export default function MemoForm({ handleAddMemo, handleNewMemoChange, newMemoCo
   return (
     <div>
       <textarea value={newMemoContent} onChange={handleNewMemoChange} />
-      {auth && <Button onClick={handleAddMemo}>Add</Button>}
+      <Button onClick={handleAddMemo} disabled={!auth}>
+        Add
+      </Button>
     </div>
   );
 }
